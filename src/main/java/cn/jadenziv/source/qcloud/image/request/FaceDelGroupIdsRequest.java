@@ -4,7 +4,7 @@ public class FaceDelGroupIdsRequest extends AbstractBaseRequest {
 
     private final String mPerson_id;
     private String[] mGrooup_ids;
-    
+
     private String mSession_id;
 
     public FaceDelGroupIdsRequest(String bucketName, String person_id, String... grooup_ids) {

@@ -9,8 +9,8 @@ import java.net.Proxy;
 /**
  * 配置文件需要配置的参数
  *
- * @Auther: jadenziv
- * @Date: 2018/12/20 14:29
+ * @author: jadenziv
+ * @date: 2018/12/20 14:29
  */
 @ConfigurationProperties(prefix = "qcloud.image")
 @Data

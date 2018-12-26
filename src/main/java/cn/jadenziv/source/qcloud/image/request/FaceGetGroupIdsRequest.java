@@ -8,18 +8,17 @@ package cn.jadenziv.source.qcloud.image.request;
 import cn.jadenziv.source.qcloud.image.exception.ParamException;
 
 /**
- *
  * @author serenazhao 获取组列表
  */
 public class FaceGetGroupIdsRequest extends AbstractBaseRequest {
-        
-        public FaceGetGroupIdsRequest(String bucketName) {
-		super(bucketName);
 
-	}
+    public FaceGetGroupIdsRequest(String bucketName) {
+        super(bucketName);
 
-	@Override
-	public void check_param() throws ParamException {
-		super.check_param();
-	}
+    }
+
+    @Override
+    public void check_param() throws ParamException {
+        super.check_param();
+    }
 }

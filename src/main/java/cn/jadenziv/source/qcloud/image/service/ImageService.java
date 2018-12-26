@@ -3,20 +3,22 @@ package cn.jadenziv.source.qcloud.image.service;
 import cn.jadenziv.source.qcloud.image.Image;
 import cn.jadenziv.source.qcloud.image.exception.AbstractImageException;
 import cn.jadenziv.source.qcloud.image.request.*;
-import cn.jadenziv.source.qcloud.image.response.AbstractResult;
-import cn.jadenziv.source.qcloud.image.response.FaceIdentifyResult;
-import cn.jadenziv.source.qcloud.image.response.FaceNewPersonResult;
-import cn.jadenziv.source.qcloud.image.response.QcloudResult;
+import cn.jadenziv.source.qcloud.image.response.*;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
- * @Auther: jadenziv
- * @Date: 2018/12/25 13:37
+ * 封装{@link cn.jadenziv.source.qcloud.image.ImageClient} 返回的json
+ *
+ * @author: jadenziv
+ * @date: 2018/12/25 13:37
+ * <a href="https://github.com/tencentyun/image-java-sdk-v2.0/blob/master/src/main/java/com/qcloud/image/demo/Demo.java">查看官方sdk demo</>
  */
 @Slf4j
 public class ImageService {
@@ -26,168 +28,434 @@ public class ImageService {
     @Autowired
     private Image image;
 
-    public Object ocrPlate(OcrPlateRequest request) throws AbstractImageException {
-        String s = image.ocrPlate(request);
-        return s;
+    /**
+     * OCR-车牌识别
+     *
+     * @param request
+     * @return {@link OcrPlateResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/866/17601">官方文档</a>
+     */
+    public QcloudResult<OcrPlateResult> ocrPlate(OcrPlateRequest request) throws AbstractImageException {
+        String json = image.ocrPlate(request);
+        return json2QcloudResult(json, OcrPlateResult.class);
     }
 
-    public String ocrBankCard(OcrBankCardRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * OCR-银行卡识别
+     *
+     * @param request
+     * @return {@link OcrBankCardResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/866/17602">官方文档</a>
+     */
+    public QcloudResult<OcrBankCardResult> ocrBankCard(OcrBankCardRequest request) throws AbstractImageException {
+        String json = image.ocrBankCard(request);
+        return json2QcloudResult(json, OcrBankCardResult.class);
     }
 
-    public String ocrBizLicense(OcrBizLicenseRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * OCR-营业执照识别
+     *
+     * @param request
+     * @return {@link OcrBankCardResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/866/17598">官方文档</a>
+     */
+    public QcloudResult<OcrBizLicenseResult> ocrBizLicense(OcrBizLicenseRequest request) throws AbstractImageException {
+        String json = image.ocrBizLicense(request);
+        return json2QcloudResult(json, OcrBizLicenseResult.class);
     }
 
-    public String ocrDrivingLicence(OcrDrivingLicenceRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    public String generalOcr(GeneralOcrRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    public String pornDetect(PornDetectRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    public String tagDetect(TagDetectRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    public String idcardDetect(IdcardDetectRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    public String namecardDetect(NamecardDetectRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    public String faceDetect(FaceDetectRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * OCR-行驶证驾驶证识别
+     *
+     * @param request
+     * @return {@link OcrDrivingLicenceResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/866/17599">官方文档</a>
+     */
+    public QcloudResult<OcrDrivingLicenceResult> ocrDrivingLicence(OcrDrivingLicenceRequest request) throws AbstractImageException {
+        String json = image.ocrDrivingLicence(request);
+        return json2QcloudResult(json, OcrDrivingLicenceResult.class);
     }
 
 
-    public String faceShape(FaceShapeRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * OCR-通用印刷体识别
+     *
+     * @param request
+     * @return {@link GeneralOcrResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/866/17600">官方文档</a>
+     */
+    public QcloudResult<GeneralOcrResult> generalOcr(GeneralOcrRequest request) throws AbstractImageException {
+        String json = image.generalOcr(request);
+        return json2QcloudResult(json, GeneralOcrResult.class);
+    }
+
+
+    /**
+     * 黄图识别
+     *
+     * @param request
+     * @return {@link OcrBizLicenseResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/864/17609">官方文档</a>
+     */
+    public List<OcrBizLicenseResult> pornDetect(PornDetectRequest request) throws AbstractImageException {
+        String json = image.pornDetect(request);
+        try {
+            return objectMapper.readValue(json, new TypeReference<List<OcrBizLicenseResult>>() {
+            });
+        } catch (IOException e) {
+            log.info("【响应结果】{}", json);
+            throw new RuntimeException("json转对象出错\r\n" + e);
+        }
+    }
+
+
+    /**
+     * 图片标签 API
+     *
+     * @param request
+     * @return {@link TagDetectResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/865/17592">官方文档</a>
+     */
+    public TagDetectResult tagDetect(TagDetectRequest request) throws AbstractImageException {
+        String json = image.tagDetect(request);
+        try {
+            return objectMapper.readValue(json, TagDetectResult.class);
+        } catch (IOException e) {
+            log.info("【响应结果】{}", json);
+            throw new RuntimeException("json转对象出错\r\n" + e);
+        }
+    }
+
+
+    /**
+     * OCR-身份证识别
+     *
+     * @param request
+     * @return {@link IdcardDetectResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/866/17597">官方文档</a>
+     */
+    public List<IdcardDetectResult> idcardDetect(IdcardDetectRequest request) throws AbstractImageException {
+        String json = image.idcardDetect(request);
+        try {
+            return objectMapper.readValue(json, new TypeReference<List<IdcardDetectResult>>() {
+            });
+        } catch (IOException e) {
+            log.info("【响应结果】{}", json);
+            throw new RuntimeException("json转对象出错\r\n" + e);
+        }
+    }
+
+
+    /**
+     * OCR-名片识别（V2）
+     *
+     * @param request
+     * @return {@link NamecardDetectResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/866/17595">官方文档</>
+     */
+    public List<NamecardDetectResult> namecardDetect(NamecardDetectRequest request) throws AbstractImageException {
+        String json = image.namecardDetect(request);
+        try {
+            return objectMapper.readValue(json, new TypeReference<List<NamecardDetectResult>>() {
+            });
+        } catch (IOException e) {
+            log.info("【响应结果】{}", json);
+            throw new RuntimeException("json转对象出错\r\n" + e);
+        }
+    }
+
+
+    /**
+     * 人脸检测
+     *
+     * @param request 人脸检测请求
+     * @return {@link FaceDetectResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17588} 腾讯官方文档链接
+     */
+    public QcloudResult<FaceDetectResult> faceDetect(FaceDetectRequest request) throws AbstractImageException {
+        String json = image.faceDetect(request);
+        return json2QcloudResult(json, FaceDetectResult.class);
+    }
+
+
+    /**
+     * 五官定位
+     *
+     * @param request 五官定位请求
+     * @return {@link FaceShapeResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17585} 腾讯官方文档链接
+     */
+    public QcloudResult<FaceShapeResult> faceShape(FaceShapeRequest request) throws AbstractImageException {
+        String json = image.faceShape(request);
+        return json2QcloudResult(json, FaceShapeResult.class);
     }
 
 
     public QcloudResult<FaceNewPersonResult> faceNewPerson(FaceNewPersonRequest request) throws AbstractImageException {
         String json = image.faceNewPerson(request);
-        return this.json2Result(json, QcloudResult.class, FaceNewPersonResult.class);
+        return json2QcloudResult(json, FaceNewPersonResult.class);
     }
 
 
-    public String faceDelPerson(FaceDelPersonRequest request) throws AbstractImageException {
-        return null;
+    public QcloudResult<FaceDelPersonResult> faceDelPerson(FaceDelPersonRequest request) throws AbstractImageException {
+        String json = image.faceDelPerson(request);
+        return json2QcloudResult(json, FaceDelPersonResult.class);
     }
 
 
-    public String faceAddFace(FaceAddFaceRequest request) throws AbstractImageException {
-        return null;
+    public QcloudResult<FaceAddFaceResult> faceAddFace(FaceAddFaceRequest request) throws AbstractImageException {
+        String json = image.faceAddFace(request);
+        return json2QcloudResult(json, FaceAddFaceResult.class);
+    }
+
+    /**
+     * 删除人脸
+     *
+     * @param request
+     * @return {@link FaceDelFaceResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E5.88.A0.E9.99.A4.E4.BA.BA.E8.84.B8}  腾讯官方文档
+     */
+    public QcloudResult<FaceDelFaceResult> faceDelFace(FaceDelFaceRequest request) throws AbstractImageException {
+        String json = image.faceDelFace(request);
+        return json2QcloudResult(json, FaceDelFaceResult.class);
     }
 
 
-    public String faceDelFace(FaceDelFaceRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 个体设置信息接口
+     *
+     * @param request
+     * @return {@link FaceSetInfoResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.AE.BE.E7.BD.AE.E4.BF.A1.E6.81.AF}  腾讯官方文档
+     */
+    public QcloudResult<FaceSetInfoResult> faceSetInfo(FaceSetInfoRequest request) throws AbstractImageException {
+        String json = image.faceSetInfo(request);
+        return json2QcloudResult(json, FaceSetInfoResult.class);
     }
 
 
-    public String faceSetInfo(FaceSetInfoRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 个体获取信息
+     *
+     * @param request
+     * @return {@link FaceGetInfoResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BF.A1.E6.81.AF} 腾讯官方文档
+     */
+    public QcloudResult<FaceGetInfoResult> faceGetInfo(FaceGetInfoRequest request) throws AbstractImageException {
+        String json = image.faceGetInfo(request);
+        return json2QcloudResult(json, FaceGetInfoResult.class);
     }
 
 
-    public String faceGetInfo(FaceGetInfoRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 获取组列表
+     *
+     * @param request
+     * @return {@link FaceGetGroupIdsResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E7.BB.84.E5.88.97.E8.A1.A8}  腾讯官方文档链接
+     */
+    public QcloudResult<FaceGetGroupIdsResult> faceGetGroupIds(FaceGetGroupIdsRequest request) throws AbstractImageException {
+        String json = image.faceGetGroupIds(request);
+        return json2QcloudResult(json, FaceGetGroupIdsResult.class);
     }
 
 
-    public String faceGetGroupIds(FaceGetGroupIdsRequest request) throws AbstractImageException {
-        return null;
+    public QcloudResult<FaceAddGroupIdsResult> faceAddGroupIds(FaceAddGroupIdsRequest request) throws AbstractImageException {
+        String json = image.faceAddGroupIds(request);
+        return json2QcloudResult(json, FaceAddGroupIdsResult.class);
     }
 
 
-    public String faceAddGroupIds(FaceAddGroupIdsRequest request) throws AbstractImageException {
-        return null;
+    public QcloudResult<FaceDelGroupIdsResult> faceDelGroupIds(FaceDelGroupIdsRequest request) throws AbstractImageException {
+        String json = image.faceDelGroupIds(request);
+        return json2QcloudResult(json, FaceDelGroupIdsResult.class);
     }
 
 
-    public String faceDelGroupIds(FaceDelGroupIdsRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 获取人列表
+     *
+     * @param request
+     * @return {@link FaceGetPersonIdsResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E5.88.97.E8.A1.A8}  腾讯官方文档
+     */
+    public QcloudResult<FaceGetPersonIdsResult> faceGetPersonIds(FaceGetPersonIdsRequest request) throws AbstractImageException {
+        String json = image.faceGetPersonIds(request);
+        return json2QcloudResult(json, FaceGetPersonIdsResult.class);
     }
 
 
-    public String faceGetPersonIds(FaceGetPersonIdsRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 获取人脸列表
+     *
+     * @param request
+     * @return {@link FaceGetFaceIdsResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E8.84.B8.E5.88.97.E8.A1.A8} 腾讯官方文档
+     */
+    public QcloudResult<FaceGetFaceIdsResult> faceGetFaceIds(FaceGetFaceIdsRequest request) throws AbstractImageException {
+        String json = image.faceGetFaceIds(request);
+        return json2QcloudResult(json, FaceGetFaceIdsResult.class);
     }
 
 
-    public String faceGetFaceIds(FaceGetFaceIdsRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    public String faceGetFaceInfo(FaceGetFaceInfoRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 获取人脸信息
+     *
+     * @param request
+     * @return {@link FaceGetFaceInfoResult}
+     * @throws AbstractImageException
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E8.84.B8.E4.BF.A1.E6.81.AF} 腾讯官方文档
+     */
+    public QcloudResult<FaceGetFaceInfoResult> faceGetFaceInfo(FaceGetFaceInfoRequest request) throws AbstractImageException {
+        String json = image.faceGetFaceInfo(request);
+        return json2QcloudResult(json, FaceGetFaceInfoResult.class);
     }
 
 
     public QcloudResult<FaceIdentifyResult> faceIdentify(FaceIdentifyRequest request) throws AbstractImageException {
         String json = image.faceIdentify(request);
-        return this.json2Result(json, QcloudResult.class, FaceIdentifyResult.class);
+        return json2QcloudResult(json, FaceIdentifyResult.class);
     }
 
 
-    public String faceVerify(FaceVerifyRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 人脸验证
+     *
+     * @param request
+     * @return {@link FaceVerifyResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/867/17589">腾讯官方文档</a>
+     */
+    public QcloudResult<FaceVerifyResult> faceVerify(FaceVerifyRequest request) throws AbstractImageException {
+        String json = image.faceVerify(request);
+        return json2QcloudResult(json, FaceVerifyResult.class);
     }
 
 
-    public String faceCompare(FaceCompareRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 人脸对比
+     *
+     * @param request
+     * @return {@link FaceCompareResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/867/17584">腾讯官方文档</a>
+     */
+    public QcloudResult<FaceCompareResult> faceCompare(FaceCompareRequest request) throws AbstractImageException {
+        String json = image.faceCompare(request);
+        return json2QcloudResult(json, FaceVerifyResult.class);
     }
 
 
-    public String faceMultiIdentify(FaceMultiIdentifyRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 多脸检索
+     *
+     * @param request
+     * @return {@link FaceMultiIdentifyResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/867/17590">腾讯官方文档</a>
+     */
+    public QcloudResult<FaceMultiIdentifyResult> faceMultiIdentify(FaceMultiIdentifyRequest request) throws AbstractImageException {
+        String json = image.faceMultiIdentify(request);
+        return json2QcloudResult(json, FaceMultiIdentifyResult.class);
     }
 
 
-    public String faceIdCardCompare(FaceIdCardCompareRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 用户上传照片身份信息核验
+     *
+     * @param request
+     * @return {@link FaceIdCardCompareResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/868/17580">腾讯官方文档</a>
+     */
+    public QcloudResult<FaceIdCardCompareResult> faceIdCardCompare(FaceIdCardCompareRequest request) throws AbstractImageException {
+        String json = image.faceIdCardCompare(request);
+        return json2QcloudResult(json, FaceIdCardCompareResult.class);
     }
 
 
-    public String faceLiveGetFour(FaceLiveGetFourRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 活体检测—获取唇语验证码
+     *
+     * @param request
+     * @return {@link FaceLiveGetFourResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/868/17579">官方文档</a>
+     */
+    public QcloudResult<FaceLiveGetFourResult> faceLiveGetFour(FaceLiveGetFourRequest request) throws AbstractImageException {
+        String json = image.faceLiveGetFour(request);
+        return json2QcloudResult(json, FaceLiveGetFourResult.class);
+    }
+
+    /**
+     * 唇语活体检测视频身份信息核验
+     *
+     * @param request
+     * @return @link FaceIdCardLiveDetectFourResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/868/17577">官方文档</a>
+     */
+    public QcloudResult<FaceIdCardLiveDetectFourResult> faceIdCardLiveDetectFour(FaceIdCardLiveDetectFourRequest request) throws AbstractImageException {
+        String json = image.faceIdCardLiveDetectFour(request);
+        return json2QcloudResult(json, FaceIdCardLiveDetectFourResult.class);
     }
 
 
-    public String faceIdCardLiveDetectFour(FaceIdCardLiveDetectFourRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 活体检测视频与用户照片的对比
+     *
+     * @param request
+     * @return {@link FaceLiveDetectFourResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/868/17578">官方文档</a>
+     */
+    public QcloudResult<FaceLiveDetectFourResult> faceLiveDetectFour(FaceLiveDetectFourRequest request) throws AbstractImageException {
+        String json = image.faceLiveDetectFour(request);
+        return json2QcloudResult(json, FaceLiveDetectFourResult.class);
     }
 
 
-    public String faceLiveDetectFour(FaceLiveDetectFourRequest request) throws AbstractImageException {
-        return null;
+    /**
+     * 人脸静态活体检测
+     *
+     * @param request
+     * @return {@link FaceLiveDetectPictureResult}
+     * @throws AbstractImageException
+     * @see <a href="https://cloud.tencent.com/document/product/868/17575">官方文档</a>
+     */
+    public QcloudResult<FaceLiveDetectPictureResult> faceLiveDetectPicture(FaceLiveDetectPictureRequest request) throws AbstractImageException {
+        String json = image.faceLiveDetectPicture(request);
+        return json2QcloudResult(json, FaceLiveDetectPictureResult.class);
     }
 
 
-    public String faceLiveDetectPicture(FaceLiveDetectPictureRequest request) throws AbstractImageException {
-        return null;
-    }
-
-
-    private static <T> T json2Result(String jsonString, Class<QcloudResult> clazz0, Class<? extends AbstractResult> clazz1) {
-        JavaType javaType = objectMapper.getTypeFactory().constructParametricType(clazz0, clazz1);
+    /**
+     * json转QcloudResult<T>
+     *
+     * @param jsonString
+     * @param classes
+     * @param <T>
+     * @return
+     */
+    private static <T> T json2QcloudResult(String jsonString, Class<?>... classes) {
+        JavaType javaType = objectMapper.getTypeFactory().constructParametricType(QcloudResult.class, classes);
         try {
             return objectMapper.readValue(jsonString, javaType);
         } catch (IOException e) {

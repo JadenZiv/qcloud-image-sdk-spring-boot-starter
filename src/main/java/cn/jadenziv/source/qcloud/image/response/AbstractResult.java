@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @Auther: jadenziv
- * @Date: 2018/12/25 14:01
+ * @author: jadenziv
+ * @date: 2018/12/25 14:01
  */
 @Getter
 @Setter

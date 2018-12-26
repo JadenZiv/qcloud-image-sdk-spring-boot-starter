@@ -6,7 +6,6 @@ import cn.jadenziv.source.qcloud.image.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +14,8 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 
 /**
- * @Auther: jadenziv
- * @Date: 2018/12/20 14:27
+ * @author: jadenziv
+ * @date: 2018/12/20 14:27
  */
 @Configuration
 @EnableConfigurationProperties(QcloudProperties.class)
@@ -28,7 +27,6 @@ public class QcloudAutoConfiguration {
     /**
      * 配置imageClient
      * 当不存在时实例化
-     * 当配置 qcloud.image.enabled = true 时 实例化
      *
      * @return
      */

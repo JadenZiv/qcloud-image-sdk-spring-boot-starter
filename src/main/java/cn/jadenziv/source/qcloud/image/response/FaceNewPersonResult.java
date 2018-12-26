@@ -6,8 +6,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @Auther: jadenziv
- * @Date: 2018/12/25 14:04
+ * @author: jadenziv
+ * @date: 2018/12/25 14:04
  */
 @Data
 public class FaceNewPersonResult extends AbstractResult {

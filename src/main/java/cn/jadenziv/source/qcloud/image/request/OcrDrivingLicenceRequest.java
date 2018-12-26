@@ -11,16 +11,19 @@ import cn.jadenziv.source.qcloud.image.exception.ParamException;
 import java.io.File;
 
 /**
- *
  * OCR-行驶证驾驶证识别 识别请求
  */
 public class OcrDrivingLicenceRequest extends AbstractBaseRequest {
 
-    /** 行驶证 */
+    /**
+     * 行驶证
+     */
     public static final int TYPE_VEHICLE_LICENSE = 0;
-    /** 驾驶证 */
+    /**
+     * 驾驶证
+     */
     public static final int TYPE_DRIVER_LICENSE = 1;
-    
+
     private final int mType;
     private boolean isUrl;
     private String url = "";
@@ -35,7 +38,7 @@ public class OcrDrivingLicenceRequest extends AbstractBaseRequest {
         this.isUrl = true;
         this.url = url;
     }
-    
+
     /**
      * @param type {@link #TYPE_VEHICLE_LICENSE} 或 {@link #TYPE_DRIVER_LICENSE}
      */

@@ -11,7 +11,6 @@ import cn.jadenziv.source.qcloud.image.exception.ParamException;
 import java.io.File;
 
 /**
- *
  * 通用 OCR 识别请求
  */
 public class GeneralOcrRequest extends AbstractBaseRequest {

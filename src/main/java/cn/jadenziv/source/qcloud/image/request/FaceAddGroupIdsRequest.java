@@ -4,7 +4,7 @@ public class FaceAddGroupIdsRequest extends AbstractBaseRequest {
 
     private final String mPerson_id;
     private String[] mGroup_ids;
-    
+
     private String mSession_id;
 
     public FaceAddGroupIdsRequest(String bucketName, String person_id, String... group_ids) {

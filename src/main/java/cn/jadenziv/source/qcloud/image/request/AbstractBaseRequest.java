@@ -27,15 +27,15 @@ public abstract class AbstractBaseRequest {
     public void setBucketName(String bucketName) {
         this.bucketName = bucketName;
     }
-    
+
     protected String getMemberStringValue(String member) {
-    	if (member != null) {
+        if (member != null) {
             return member;
         } else {
             return "null";
-    	}
+        }
     }
-    
+
     // 将request转换为字符串, 用于记录信息
     @Override
     public String toString() {
@@ -43,10 +43,10 @@ public abstract class AbstractBaseRequest {
         sb.append("bucketName:").append(getMemberStringValue(bucketName));
         return sb.toString();
     }
-     
+
     // 检查用户的输入参数
     public void check_param() throws ParamException {
-    	CommonParamCheckUtils.AssertNotNull("bucketName", this.bucketName);
+        CommonParamCheckUtils.AssertNotNull("bucketName", this.bucketName);
     }
 
     void setBytesContent(String key, byte[] content) {
