@@ -11,7 +11,7 @@
    <version>1.0.0</version>
  </dependency>
 ```
-###使用方法
+### 使用方法
 
 1.在**application.yml**简单配置
 ```
