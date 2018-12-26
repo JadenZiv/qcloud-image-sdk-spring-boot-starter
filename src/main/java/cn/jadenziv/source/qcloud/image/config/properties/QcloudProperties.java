@@ -20,7 +20,7 @@ public class QcloudProperties {
     private String secretKey;
 
     /**
-     * 默认不开启代理
+     * The default is not to open the proxy
      */
     private Boolean isEnableProxy = false;
     private Proxy.Type type;
