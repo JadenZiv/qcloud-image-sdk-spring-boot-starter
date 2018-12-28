@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * OCR-车牌识别
- * <a href="https://cloud.tencent.com/document/product/866/17601">官方文档</a>
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/866/17601">官方文档</a>
  *
  * @author jadenziv
  * @date 2018/12/26 10:02
@@ -21,7 +21,7 @@ public class OcrPlateResult {
     private List<Item> items;
 
     @Data
-    public class Item {
+    public static class Item {
 
         /**
          * 字段名称
@@ -40,29 +40,7 @@ public class OcrPlateResult {
         @JsonProperty("itemconf")
         private Float itemConf;
 
-        private Itemcoord itemcoord;
+        private OcrItemCoord itemcoord;
     }
 
-    @Data
-    public class Itemcoord {
-        /**
-         * 人脸位置左上角横坐标
-         */
-        private Integer x;
-
-        /**
-         * 人脸位置左上角纵坐标
-         */
-        private Integer y;
-
-        /**
-         * 人脸宽度
-         */
-        private Integer width;
-
-        /**
-         * 人脸高度
-         */
-        private Integer height;
-    }
 }

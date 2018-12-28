@@ -7,10 +7,10 @@ import java.util.List;
 
 /**
  * OCR-名片识别（V2）
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/866/17595">查看文档</a>
  *
  * @author jadenziv
  * @date 2018/12/26 11:29
- * @see <a href="https://cloud.tencent.com/document/product/866/17595">官方文档</>
  */
 @Data
 public class NamecardDetectResult {

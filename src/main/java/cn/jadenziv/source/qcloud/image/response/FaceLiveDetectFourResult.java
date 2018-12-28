@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * 活体检测视频与用户照片的对比
- * <a href="https://cloud.tencent.com/document/product/868/17578">官方文档</a>
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/868/17578">官方文档</a>
  *
  * @author jadenziv
  * @date 2018/12/26 11:10

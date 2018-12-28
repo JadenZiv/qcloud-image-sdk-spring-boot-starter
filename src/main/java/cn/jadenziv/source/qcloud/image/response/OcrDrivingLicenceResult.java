@@ -7,10 +7,10 @@ import java.util.List;
 
 /**
  * OCR-行驶证驾驶证识别
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/866/17599">官方文档</a>
  *
  * @author jadenziv
  * @date 2018/12/26 10:37
- * @see <a href="https://cloud.tencent.com/document/product/866/17599">官方文档</a>
  */
 @Data
 public class OcrDrivingLicenceResult extends AbstractResult {
@@ -21,7 +21,7 @@ public class OcrDrivingLicenceResult extends AbstractResult {
     private List<Item> items;
 
     @Data
-    public class Item {
+    public static class Item {
 
         private String item;
 
@@ -31,29 +31,7 @@ public class OcrDrivingLicenceResult extends AbstractResult {
         @JsonProperty("itemconf")
         private Float itemConf;
 
-        private List<Itemcoord> itemcoord;
+        private OcrItemCoord itemcoord;
     }
 
-    @Data
-    public class Itemcoord {
-        /**
-         * item 框左上角 x
-         */
-        private Integer x;
-
-        /**
-         * item 框左上角 y
-         */
-        private Integer y;
-
-        /**
-         * item 框宽度
-         */
-        private Integer width;
-
-        /**
-         * item 框高度
-         */
-        private Integer height;
-    }
 }

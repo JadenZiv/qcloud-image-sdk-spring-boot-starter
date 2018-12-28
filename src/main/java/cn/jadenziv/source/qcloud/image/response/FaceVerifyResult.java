@@ -4,10 +4,10 @@ import lombok.Data;
 
 /**
  * 人脸验证
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/867/17589">查看文档</a>
  *
  * @author jadenziv
  * @date 2018/12/25 18:58
- * @see {https://cloud.tencent.com/document/product/867/17589} 腾讯官方文档
  */
 @Data
 public class FaceVerifyResult extends AbstractResult {

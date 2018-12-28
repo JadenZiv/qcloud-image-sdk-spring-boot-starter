@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
+ * 人脸检测
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/867/17588">查看文档</a>
+ *
  * @author jadenziv
  * @date 2018/12/25 17:54
- * @see {https://cloud.tencent.com/document/product/867/17588} 腾讯官方文档链接
  */
 @Data
 public class FaceDetectResult extends AbstractResult {

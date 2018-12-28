@@ -2,6 +2,7 @@ package cn.jadenziv.source.qcloud.image.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 

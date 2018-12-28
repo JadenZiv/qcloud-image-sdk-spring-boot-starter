@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 多脸检索
- * <a href="https://cloud.tencent.com/document/product/867/17590">查看文档</a>
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/867/17590">查看文档</a>
  *
  * @author jadenziv
  * @date 2018/12/26 09:21

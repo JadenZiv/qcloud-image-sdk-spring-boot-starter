@@ -1,0 +1,5 @@
+qcloud:
+  image:
+    app-id: xxx
+    secret-id: xx
+    secret-key: xxx

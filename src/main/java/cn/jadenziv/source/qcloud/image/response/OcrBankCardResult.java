@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * OCR-银行卡识别
- * <a href="https://cloud.tencent.com/document/product/866/17602">官方文档</a>
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/866/17602">官方文档</a>
  *
  * @author jadenziv
  * @date 2018/12/26 10:27
@@ -15,10 +15,22 @@ import java.util.List;
 @Data
 public class OcrBankCardResult extends AbstractResult {
 
+    /**
+     * 下面三个字段腾讯文档没有详细标注,具体用途不明
+     */
+    @JsonProperty("recognize_warn_msg")
+    private List recognizeWarnMsg;
+
+    @JsonProperty("recognize_warn_code")
+    private List recognizeWarnCode;
+
+    @JsonProperty("class")
+    private List clazz;
+
     private List<Item> items;
 
     @Data
-    public class Item {
+    public static class Item {
 
         /**
          * 字段名称
@@ -37,39 +49,19 @@ public class OcrBankCardResult extends AbstractResult {
         @JsonProperty("itemconf")
         private Float itemConf;
 
-        private Itemcoord itemcoord;
+        private OcrItemCoord itemcoord;
 
         /**
-         * 下面三个字段腾讯文档没有详细标注,具体用途不明
+         * 下面四个字段腾讯文档没有详细标注,具体用途不明
          */
         private List coords;
 
         private List words;
 
         private List candword;
+
+        private List wordcoordpoint;
     }
 
-    @Data
-    public class Itemcoord {
-        /**
-         * 人脸位置左上角横坐标
-         */
-        private Integer x;
-
-        /**
-         * 人脸位置左上角纵坐标
-         */
-        private Integer y;
-
-        /**
-         * 人脸宽度
-         */
-        private Integer width;
-
-        /**
-         * 人脸高度
-         */
-        private Integer height;
-    }
 
 }

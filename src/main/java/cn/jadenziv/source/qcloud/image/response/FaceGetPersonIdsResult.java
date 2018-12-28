@@ -5,10 +5,10 @@ import lombok.Data;
 
 /**
  * 获取人列表
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E5.88.97.E8.A1.A8">查看文档</a>
  *
  * @author jadenziv
  * @date 2018/12/25 18:47
- * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E5.88.97.E8.A1.A8}  腾讯官方文档
  */
 @Data
 public class FaceGetPersonIdsResult extends AbstractResult {

@@ -7,9 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 五官定位
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/867/17585">查看文档</a>
+ *
  * @author jadenziv
  * @date 2018/12/25 18:18
- * @see {https://cloud.tencent.com/document/product/867/17585} 腾讯官方文档链接
  */
 @Data
 public class FaceShapeResult extends AbstractResult {

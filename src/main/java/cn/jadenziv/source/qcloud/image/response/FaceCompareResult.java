@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * @
+ * 人脸对比
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/867/17584">查看文档</a>
+ *
  * @author jadenziv
  * @date 2018/12/26 09:06
- * @see <a href="https://cloud.tencent.com/document/product/867/17584">腾讯官方文档</a>
  */
 @Data
 public class FaceCompareResult extends AbstractResult {

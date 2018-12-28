@@ -3,65 +3,52 @@ package cn.jadenziv.source.qcloud.image.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
 /**
- * 智能鉴黄 API
+ * OCR-营业执照识别
+ * <a target="_blank"  href="https://cloud.tencent.com/document/product/866/17598">查看文档</a>
  *
  * @author jadenziv
- * @date 2018/12/26 10:34
- * @see <a href="https://cloud.tencent.com/document/product/864/17609">官方文档</a>
+ * @date 2018/12/26 10:42
  */
 @Data
-public class OcrBizLicenseResult {
+public class OcrBizLicenseResult extends AbstractResult{
 
-    private Integer code;
 
-    private String message;
-
-    /**
-     * 当前图片的 url
-     */
-    private String url;
-
-    /**
-     * 具体查询数据，具体见下表
-     */
-    private Detail data;
+    private List<Item> items;
 
     @Data
-    public class Detail {
+    public static class Item {
 
         /**
-         * 供参考的识别结果：0为正常，1为黄图，2为疑似图片
+         * 字段名称
          */
-        private Integer result;
+        private String item;
 
         /**
-         * 识别为黄图的置信度，分值 0-100；是 normal_score、hot_score、porn_score 的综合评分
+         * 字段内容
          */
-        private Double confidence;
+        @JsonProperty("itemstring")
+        private String itemString;
 
         /**
-         * 图片为正常图片的评分
+         * 字段识别结果置信度
          */
-        @JsonProperty("normal_score")
-        private Double normalScore;
+        @JsonProperty("itemconf")
+        private Float itemConf;
+
+        private OcrItemCoord itemcoord;
 
         /**
-         * 图片为性感图片的评分
+         * 下面四个字段腾讯文档没有详细标注,具体用途不明
          */
-        @JsonProperty("hotScore")
-        private Double hot_score;
+        private List coords;
 
-        /**
-         * 图片为色情图片的评分
-         */
-        @JsonProperty("porn_score")
-        private Double pornScore;
+        private List words;
 
-        /**
-         * 封禁状态，0表示正常，1表示图片已被封禁（只有存储在腾讯云的图片才会被封禁）
-         */
-        @JsonProperty("forbid_status")
-        private Integer forbidStatus;
+        private List candword;
+
     }
+
 }
