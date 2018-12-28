@@ -6,8 +6,8 @@ import lombok.Data;
 /**
  * 智能鉴黄 API
  *
- * @author: jadenziv
- * @date: 2018/12/26 10:34
+ * @author jadenziv
+ * @date 2018/12/26 10:34
  * @see <a href="https://cloud.tencent.com/document/product/864/17609">官方文档</a>
  */
 @Data

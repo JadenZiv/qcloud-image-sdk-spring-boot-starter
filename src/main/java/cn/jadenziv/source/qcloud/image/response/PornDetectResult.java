@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * 黄图识别结果
  *
- * @author: jadenziv
- * @date: 2018/12/26 10:42
+ * @author jadenziv
+ * @date 2018/12/26 10:42
  */
 @Data
 public class PornDetectResult {

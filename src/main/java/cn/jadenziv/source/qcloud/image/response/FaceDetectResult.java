@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * @author: jadenziv
- * @date: 2018/12/25 17:54
+ * @author jadenziv
+ * @date 2018/12/25 17:54
  * @see {https://cloud.tencent.com/document/product/867/17588} 腾讯官方文档链接
  */
 @Data

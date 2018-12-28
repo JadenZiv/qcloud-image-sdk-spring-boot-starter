@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author: jadenziv
- * @date: 2018/12/25 18:18
+ * @author jadenziv
+ * @date 2018/12/25 18:18
  * @see {https://cloud.tencent.com/document/product/867/17585} 腾讯官方文档链接
  */
 @Data

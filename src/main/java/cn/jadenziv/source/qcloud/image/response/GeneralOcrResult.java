@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * OCR-通用印刷体识别
  *
- * @author: jadenziv
- * @date: 2018/12/26 10:38
+ * @author jadenziv
+ * @date 2018/12/26 10:38
  * @see <a href="https://cloud.tencent.com/document/product/866/17600#.E7.A4.BA.E4.BE.8B">官方文档</a>
  */
 @Data

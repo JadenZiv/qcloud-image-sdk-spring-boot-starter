@@ -5,8 +5,8 @@ import lombok.Data;
 
 /**
  * @
- * @author: jadenziv
- * @date: 2018/12/26 09:06
+ * @author jadenziv
+ * @date 2018/12/26 09:06
  * @see <a href="https://cloud.tencent.com/document/product/867/17584">腾讯官方文档</a>
  */
 @Data

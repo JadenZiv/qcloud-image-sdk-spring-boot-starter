@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * 封装{@link cn.jadenziv.source.qcloud.image.ImageClient} 返回的json
- *
- * @author: jadenziv
- * @date: 2018/12/25 13:37
+ * 封装{@link cn.jadenziv.source.qcloud.image.ImageClient} 返回的json字符串
  * <a href="https://github.com/tencentyun/image-java-sdk-v2.0/blob/master/src/main/java/com/qcloud/image/demo/Demo.java">查看官方sdk demo</>
+ *
+ * @author jadenziv
+ * @date 2018/12/25 13:37
  */
 @Slf4j
 public class ImageService {
@@ -30,11 +30,11 @@ public class ImageService {
 
     /**
      * OCR-车牌识别
+     * <a href="https://cloud.tencent.com/document/product/866/17601">查看文档</a>
      *
      * @param request
-     * @return {@link OcrPlateResult}
+     * @return
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/866/17601">官方文档</a>
      */
     public QcloudResult<OcrPlateResult> ocrPlate(OcrPlateRequest request) throws AbstractImageException {
         String json = image.ocrPlate(request);
@@ -43,11 +43,11 @@ public class ImageService {
 
     /**
      * OCR-银行卡识别
+     * <a href="https://cloud.tencent.com/document/product/866/17602">查看文档</a>
      *
      * @param request
-     * @return {@link OcrBankCardResult}
+     * @return
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/866/17602">官方文档</a>
      */
     public QcloudResult<OcrBankCardResult> ocrBankCard(OcrBankCardRequest request) throws AbstractImageException {
         String json = image.ocrBankCard(request);
@@ -60,7 +60,7 @@ public class ImageService {
      * @param request
      * @return {@link OcrBankCardResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/866/17598">官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/866/17598">查看文档</a>
      */
     public QcloudResult<OcrBizLicenseResult> ocrBizLicense(OcrBizLicenseRequest request) throws AbstractImageException {
         String json = image.ocrBizLicense(request);
@@ -73,7 +73,7 @@ public class ImageService {
      * @param request
      * @return {@link OcrDrivingLicenceResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/866/17599">官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/866/17599">查看文档</a>
      */
     public QcloudResult<OcrDrivingLicenceResult> ocrDrivingLicence(OcrDrivingLicenceRequest request) throws AbstractImageException {
         String json = image.ocrDrivingLicence(request);
@@ -87,7 +87,7 @@ public class ImageService {
      * @param request
      * @return {@link GeneralOcrResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/866/17600">官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/866/17600">查看文档</a>
      */
     public QcloudResult<GeneralOcrResult> generalOcr(GeneralOcrRequest request) throws AbstractImageException {
         String json = image.generalOcr(request);
@@ -101,7 +101,7 @@ public class ImageService {
      * @param request
      * @return {@link OcrBizLicenseResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/864/17609">官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/864/17609">查看文档</a>
      */
     public List<OcrBizLicenseResult> pornDetect(PornDetectRequest request) throws AbstractImageException {
         String json = image.pornDetect(request);
@@ -121,7 +121,7 @@ public class ImageService {
      * @param request
      * @return {@link TagDetectResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/865/17592">官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/865/17592">查看文档</a>
      */
     public TagDetectResult tagDetect(TagDetectRequest request) throws AbstractImageException {
         String json = image.tagDetect(request);
@@ -140,7 +140,7 @@ public class ImageService {
      * @param request
      * @return {@link IdcardDetectResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/866/17597">官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/866/17597">查看文档</a>
      */
     public List<IdcardDetectResult> idcardDetect(IdcardDetectRequest request) throws AbstractImageException {
         String json = image.idcardDetect(request);
@@ -160,7 +160,7 @@ public class ImageService {
      * @param request
      * @return {@link NamecardDetectResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/866/17595">官方文档</>
+     * @see <a href="https://cloud.tencent.com/document/product/866/17595">查看文档</>
      */
     public List<NamecardDetectResult> namecardDetect(NamecardDetectRequest request) throws AbstractImageException {
         String json = image.namecardDetect(request);
@@ -176,11 +176,11 @@ public class ImageService {
 
     /**
      * 人脸检测
+     * <a href="https://cloud.tencent.com/document/product/867/17588">查看文档</a>
      *
-     * @param request 人脸检测请求
-     * @return {@link FaceDetectResult}
+     * @param request
+     * @return
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17588} 腾讯官方文档链接
      */
     public QcloudResult<FaceDetectResult> faceDetect(FaceDetectRequest request) throws AbstractImageException {
         String json = image.faceDetect(request);
@@ -190,11 +190,11 @@ public class ImageService {
 
     /**
      * 五官定位
+     * <a href="https://cloud.tencent.com/document/product/867/17585">查看文档</a>
      *
-     * @param request 五官定位请求
-     * @return {@link FaceShapeResult}
+     * @param request
+     * @return
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17585} 腾讯官方文档链接
      */
     public QcloudResult<FaceShapeResult> faceShape(FaceShapeRequest request) throws AbstractImageException {
         String json = image.faceShape(request);
@@ -225,7 +225,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceDelFaceResult}
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17583#.E5.88.A0.E9.99.A4.E4.BA.BA.E8.84.B8}  腾讯官方文档
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E5.88.A0.E9.99.A4.E4.BA.BA.E8.84.B8}  查看文档
      */
     public QcloudResult<FaceDelFaceResult> faceDelFace(FaceDelFaceRequest request) throws AbstractImageException {
         String json = image.faceDelFace(request);
@@ -239,7 +239,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceSetInfoResult}
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.AE.BE.E7.BD.AE.E4.BF.A1.E6.81.AF}  腾讯官方文档
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.AE.BE.E7.BD.AE.E4.BF.A1.E6.81.AF}  查看文档
      */
     public QcloudResult<FaceSetInfoResult> faceSetInfo(FaceSetInfoRequest request) throws AbstractImageException {
         String json = image.faceSetInfo(request);
@@ -253,7 +253,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceGetInfoResult}
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BF.A1.E6.81.AF} 腾讯官方文档
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BF.A1.E6.81.AF} 查看文档
      */
     public QcloudResult<FaceGetInfoResult> faceGetInfo(FaceGetInfoRequest request) throws AbstractImageException {
         String json = image.faceGetInfo(request);
@@ -267,7 +267,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceGetGroupIdsResult}
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E7.BB.84.E5.88.97.E8.A1.A8}  腾讯官方文档链接
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E7.BB.84.E5.88.97.E8.A1.A8}  查看文档
      */
     public QcloudResult<FaceGetGroupIdsResult> faceGetGroupIds(FaceGetGroupIdsRequest request) throws AbstractImageException {
         String json = image.faceGetGroupIds(request);
@@ -293,7 +293,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceGetPersonIdsResult}
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E5.88.97.E8.A1.A8}  腾讯官方文档
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E5.88.97.E8.A1.A8}  查看文档
      */
     public QcloudResult<FaceGetPersonIdsResult> faceGetPersonIds(FaceGetPersonIdsRequest request) throws AbstractImageException {
         String json = image.faceGetPersonIds(request);
@@ -307,7 +307,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceGetFaceIdsResult}
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E8.84.B8.E5.88.97.E8.A1.A8} 腾讯官方文档
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E8.84.B8.E5.88.97.E8.A1.A8} 查看文档
      */
     public QcloudResult<FaceGetFaceIdsResult> faceGetFaceIds(FaceGetFaceIdsRequest request) throws AbstractImageException {
         String json = image.faceGetFaceIds(request);
@@ -321,7 +321,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceGetFaceInfoResult}
      * @throws AbstractImageException
-     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E8.84.B8.E4.BF.A1.E6.81.AF} 腾讯官方文档
+     * @see {https://cloud.tencent.com/document/product/867/17583#.E8.8E.B7.E5.8F.96.E4.BA.BA.E8.84.B8.E4.BF.A1.E6.81.AF} 查看文档
      */
     public QcloudResult<FaceGetFaceInfoResult> faceGetFaceInfo(FaceGetFaceInfoRequest request) throws AbstractImageException {
         String json = image.faceGetFaceInfo(request);
@@ -341,7 +341,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceVerifyResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/867/17589">腾讯官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/867/17589">查看文档</a>
      */
     public QcloudResult<FaceVerifyResult> faceVerify(FaceVerifyRequest request) throws AbstractImageException {
         String json = image.faceVerify(request);
@@ -355,7 +355,7 @@ public class ImageService {
      * @param request
      * @return {@link FaceCompareResult}
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/867/17584">腾讯官方文档</a>
+     * @see <a href="https://cloud.tencent.com/document/product/867/17584">查看文档</a>
      */
     public QcloudResult<FaceCompareResult> faceCompare(FaceCompareRequest request) throws AbstractImageException {
         String json = image.faceCompare(request);
@@ -365,11 +365,11 @@ public class ImageService {
 
     /**
      * 多脸检索
+     * <a href="https://cloud.tencent.com/document/product/867/17590">查看文档</a>
      *
      * @param request
-     * @return {@link FaceMultiIdentifyResult}
+     * @return 
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/867/17590">腾讯官方文档</a>
      */
     public QcloudResult<FaceMultiIdentifyResult> faceMultiIdentify(FaceMultiIdentifyRequest request) throws AbstractImageException {
         String json = image.faceMultiIdentify(request);
@@ -379,11 +379,11 @@ public class ImageService {
 
     /**
      * 用户上传照片身份信息核验
+     * <a href="https://cloud.tencent.com/document/product/868/17580">查看文档</a>
      *
      * @param request
-     * @return {@link FaceIdCardCompareResult}
+     * @return
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/868/17580">腾讯官方文档</a>
      */
     public QcloudResult<FaceIdCardCompareResult> faceIdCardCompare(FaceIdCardCompareRequest request) throws AbstractImageException {
         String json = image.faceIdCardCompare(request);
@@ -393,11 +393,11 @@ public class ImageService {
 
     /**
      * 活体检测—获取唇语验证码
+     * <a href="https://cloud.tencent.com/document/product/868/17579">查看文档</a>
      *
      * @param request
-     * @return {@link FaceLiveGetFourResult}
+     * @return
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/868/17579">官方文档</a>
      */
     public QcloudResult<FaceLiveGetFourResult> faceLiveGetFour(FaceLiveGetFourRequest request) throws AbstractImageException {
         String json = image.faceLiveGetFour(request);
@@ -406,11 +406,11 @@ public class ImageService {
 
     /**
      * 唇语活体检测视频身份信息核验
+     * <a href="https://cloud.tencent.com/document/product/868/17577">查看文档</a>
      *
      * @param request
-     * @return @link FaceIdCardLiveDetectFourResult}
+     * @return
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/868/17577">官方文档</a>
      */
     public QcloudResult<FaceIdCardLiveDetectFourResult> faceIdCardLiveDetectFour(FaceIdCardLiveDetectFourRequest request) throws AbstractImageException {
         String json = image.faceIdCardLiveDetectFour(request);
@@ -421,10 +421,12 @@ public class ImageService {
     /**
      * 活体检测视频与用户照片的对比
      *
+     * <a href="https://cloud.tencent.com/document/product/868/17578">查看文档</a>
+     *
      * @param request
-     * @return {@link FaceLiveDetectFourResult}
+     * @return
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/868/17578">官方文档</a>
+     * @see
      */
     public QcloudResult<FaceLiveDetectFourResult> faceLiveDetectFour(FaceLiveDetectFourRequest request) throws AbstractImageException {
         String json = image.faceLiveDetectFour(request);
@@ -434,11 +436,11 @@ public class ImageService {
 
     /**
      * 人脸静态活体检测
+     * <a href="https://cloud.tencent.com/document/product/868/17575">查看文档</a>
      *
      * @param request
-     * @return {@link FaceLiveDetectPictureResult}
+     * @return
      * @throws AbstractImageException
-     * @see <a href="https://cloud.tencent.com/document/product/868/17575">官方文档</a>
      */
     public QcloudResult<FaceLiveDetectPictureResult> faceLiveDetectPicture(FaceLiveDetectPictureRequest request) throws AbstractImageException {
         String json = image.faceLiveDetectPicture(request);

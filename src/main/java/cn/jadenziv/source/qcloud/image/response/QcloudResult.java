@@ -5,8 +5,8 @@ import lombok.Data;
 /**
  * 返回对象
  *
- * @author: jadenziv
- * @date: 2018/11/27 16:42
+ * @author jadenziv
+ * @date 2018/11/27 16:42
  */
 @Data
 public class QcloudResult<T> {

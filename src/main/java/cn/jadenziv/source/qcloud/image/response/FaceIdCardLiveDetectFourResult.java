@@ -5,10 +5,10 @@ import lombok.Data;
 
 /**
  * 唇语活体检测视频身份信息核验
+ * <a href="https://cloud.tencent.com/document/product/868/17577">官方文档</a>
  *
- * @author: jadenziv
- * @date: 2018/12/26 11:13
- * @see <a href="https://cloud.tencent.com/document/product/868/17577">官方文档</a>
+ * @author jadenziv
+ * @date 2018/12/26 11:13
  */
 @Data
 public class FaceIdCardLiveDetectFourResult {

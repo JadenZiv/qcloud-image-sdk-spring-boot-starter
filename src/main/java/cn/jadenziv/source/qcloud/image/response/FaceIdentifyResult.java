@@ -8,8 +8,8 @@ import java.util.List;
 
 /**
  * @see cn.jadenziv.source.qcloud.image.Image#faceIdentify(FaceIdentifyRequest)
- * @author: jadenziv
- * @date: 2018/12/25 15:25
+ * @author jadenziv
+ * @date 2018/12/25 15:25
  */
 @Data
 public class FaceIdentifyResult extends AbstractResult{

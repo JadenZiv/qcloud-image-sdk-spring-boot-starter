@@ -6,8 +6,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author: jadenziv
- * @date: 2018/12/25 17:44
+ * @author jadenziv
+ * @date 2018/12/25 17:44
  */
 @Data
 public class FaceAddGroupIdsResult extends AbstractResult {

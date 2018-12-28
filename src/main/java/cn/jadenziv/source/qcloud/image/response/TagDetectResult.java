@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * 图片标签 API
  *
- * @author: jadenziv
- * @date: 2018/12/26 10:53
+ * @author jadenziv
+ * @date 2018/12/26 10:53
  * @see <a href="https://cloud.tencent.com/document/product/865/17592">官方文档</a>
  */
 @Data

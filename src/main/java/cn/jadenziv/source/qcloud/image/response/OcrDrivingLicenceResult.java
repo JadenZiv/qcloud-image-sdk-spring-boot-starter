@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * OCR-行驶证驾驶证识别
  *
- * @author: jadenziv
- * @date: 2018/12/26 10:37
+ * @author jadenziv
+ * @date 2018/12/26 10:37
  * @see <a href="https://cloud.tencent.com/document/product/866/17599">官方文档</a>
  */
 @Data

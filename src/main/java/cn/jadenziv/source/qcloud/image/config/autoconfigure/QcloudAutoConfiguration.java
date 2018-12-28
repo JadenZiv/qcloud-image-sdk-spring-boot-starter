@@ -14,8 +14,8 @@ import java.net.InetSocketAddress;
 import java.net.Proxy;
 
 /**
- * @author: jadenziv
- * @date: 2018/12/20 14:27
+ * @author jadenziv
+ * @date 2018/12/20 14:27
  */
 @Configuration
 @EnableConfigurationProperties(QcloudProperties.class)

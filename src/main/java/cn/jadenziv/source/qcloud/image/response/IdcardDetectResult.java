@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * OCR-身份证识别
  *
- * @author: jadenziv
- * @date: 2018/12/26 11:36
+ * @author jadenziv
+ * @date 2018/12/26 11:36
  * @see <a href="https://cloud.tencent.com/document/product/866/17597">官方文档</a>
  */
 @Data

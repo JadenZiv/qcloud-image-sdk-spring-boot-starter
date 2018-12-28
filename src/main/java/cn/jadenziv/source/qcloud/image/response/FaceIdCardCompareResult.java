@@ -4,9 +4,10 @@ import lombok.Data;
 
 /**
  * 用户上传照片身份信息核验
+ * <a href="https://cloud.tencent.com/document/product/868/17580">腾讯官方文档</a>
  *
- * @author: jadenziv
- * @date: 2018/12/26 11:01
+ * @author jadenziv
+ * @date 2018/12/26 11:01
  */
 @Data
 public class FaceIdCardCompareResult extends AbstractResult {

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * @author: jadenziv
- * @date: 2018/12/25 17:38
+ * @author jadenziv
+ * @date 2018/12/25 17:38
  */
 @Data
 public class FaceDelPersonResult extends AbstractResult {

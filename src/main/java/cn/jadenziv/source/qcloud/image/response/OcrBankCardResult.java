@@ -6,8 +6,11 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author: jadenziv
- * @date: 2018/12/26 10:27
+ * OCR-银行卡识别
+ * <a href="https://cloud.tencent.com/document/product/866/17602">官方文档</a>
+ *
+ * @author jadenziv
+ * @date 2018/12/26 10:27
  */
 @Data
 public class OcrBankCardResult extends AbstractResult {
