@@ -103,10 +103,10 @@ public class ImageService {
      * @return
      * @throws AbstractImageException
      */
-    public List<PornDetectResult> pornDetect(PornDetectRequest request) throws AbstractImageException {
+    public PornDetectResult pornDetect(PornDetectRequest request) throws AbstractImageException {
         String json = image.pornDetect(request);
         try {
-            return objectMapper.readValue(json, new TypeReference<List<PornDetectResult>>() {
+            return objectMapper.readValue(json, new TypeReference<PornDetectResult>() {
             });
         } catch (IOException e) {
             log.info("【响应结果】{}", json);
@@ -141,10 +141,10 @@ public class ImageService {
      * @return
      * @throws AbstractImageException
      */
-    public List<IdcardDetectResult> idcardDetect(IdcardDetectRequest request) throws AbstractImageException {
+    public IdcardDetectResult idcardDetect(IdcardDetectRequest request) throws AbstractImageException {
         String json = image.idcardDetect(request);
         try {
-            return objectMapper.readValue(json, new TypeReference<List<IdcardDetectResult>>() {
+            return objectMapper.readValue(json, new TypeReference<IdcardDetectResult>() {
             });
         } catch (IOException e) {
             log.info("【响应结果】{}", json);
@@ -161,10 +161,10 @@ public class ImageService {
      * @return
      * @throws AbstractImageException
      */
-    public List<NamecardDetectResult> namecardDetect(NamecardDetectRequest request) throws AbstractImageException {
+    public NamecardDetectResult namecardDetect(NamecardDetectRequest request) throws AbstractImageException {
         String json = image.namecardDetect(request);
         try {
-            return objectMapper.readValue(json, new TypeReference<List<NamecardDetectResult>>() {
+            return objectMapper.readValue(json, new TypeReference<NamecardDetectResult>() {
             });
         } catch (IOException e) {
             log.info("【响应结果】{}", json);
@@ -456,10 +456,10 @@ public class ImageService {
      */
     private static <T> T json2QcloudResult(String jsonString, Class<?>... classes) {
         JavaType javaType = objectMapper.getTypeFactory().constructParametricType(QcloudResult.class, classes);
+        log.info("【响应结果】{}", jsonString);
         try {
             return objectMapper.readValue(jsonString, javaType);
         } catch (IOException e) {
-            log.info("【响应结果】{}", jsonString);
             throw new RuntimeException("json转对象出错\r\n" + e);
         }
     }

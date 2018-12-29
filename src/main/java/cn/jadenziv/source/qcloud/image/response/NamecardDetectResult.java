@@ -15,17 +15,22 @@ import java.util.List;
 @Data
 public class NamecardDetectResult {
 
-    private Integer code;
-
-    private String message;
-
-    @JsonProperty("filename")
-    private String fileName;
-
-    private List<Detail> data;
+    @JsonProperty("result_list")
+    private List<Result> resultList;
 
     @Data
-    public class Detail {
+    public static class Result {
+        private Integer code;
+
+        private String message;
+
+        private String url;
+
+        private List<Detail> data;
+    }
+
+    @Data
+    public static class Detail {
 
         /**
          * 字段字符串

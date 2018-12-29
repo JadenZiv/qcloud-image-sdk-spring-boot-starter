@@ -1,5 +1,5 @@
 qcloud:
   image:
-    app-id: xxx
+    app-id: xx
     secret-id: xx
-    secret-key: xxx
+    secret-key: xx

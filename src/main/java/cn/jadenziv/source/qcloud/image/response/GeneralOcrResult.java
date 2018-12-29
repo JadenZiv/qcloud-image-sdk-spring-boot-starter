@@ -20,42 +20,33 @@ public class GeneralOcrResult extends AbstractResult {
      */
     private List<Item> items;
 
+
+    //下面四个字段具体功能不明
+    @JsonProperty("class")
+    private List clazz;
+
+    @JsonProperty("recognize_warn_msg")
+    private List recognizeWarnMsg;
+
+    @JsonProperty("recognize_warn_code")
+    private List recognizeWarnCode;
+
+    private Float angle;
+
+
     @Data
-    public class Item {
+    public static class Item {
 
         @JsonProperty("itemstring")
         private String itemString;
 
-        private Itemcoord itemcoord;
+        private OcrItemCoord itemcoord;
 
         private List<Word> words;
     }
 
     @Data
-    public class Itemcoord {
-        /**
-         * item 框左上角 x
-         */
-        private Integer x;
-
-        /**
-         * item 框左上角 y
-         */
-        private Integer y;
-
-        /**
-         * item 框宽度
-         */
-        private Integer width;
-
-        /**
-         * item 框高度
-         */
-        private Integer height;
-    }
-
-    @Data
-    public class Word {
+    public static class Word {
 
         /**
          * 单字的内容

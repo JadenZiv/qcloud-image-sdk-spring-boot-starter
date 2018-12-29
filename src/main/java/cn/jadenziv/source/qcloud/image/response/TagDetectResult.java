@@ -22,10 +22,10 @@ public class TagDetectResult {
     /**
      * 图像的分类标签列表
      */
-    private List<Detail> tag;
+    private List<Detail> tags;
 
     @Data
-    public class Detail {
+    public static class Detail {
 
         /**
          * 返回的图像标签名字

@@ -15,23 +15,28 @@ import java.util.List;
 @Data
 public class IdcardDetectResult {
 
-    private Integer code;
-
-    private String message;
-
-    /**
-     * 当前图片的 url
-     */
-    private String url;
-
-    /**
-     * 具体查询数据，内容见下表
-     */
-    private List<Detail> data;
-
+    @JsonProperty("result_list")
+    private List<Result> resultList;
 
     @Data
-    public class Detail {
+    public static class Result {
+        private Integer code;
+
+        private String message;
+
+        /**
+         * 当前图片的 url
+         */
+        private String url;
+
+        /**
+         * 具体查询数据，内容见下表
+         */
+        private Detail data;
+    }
+
+    @Data
+    public static class Detail {
 
         /**
          * 姓名
@@ -100,6 +105,17 @@ public class IdcardDetectResult {
         @JsonProperty("id_confidence_all")
         private List<Integer> idConfidenceAll;
 
+        @JsonProperty("detail_errorcode")
+        private List detailErrorcode;
+
+        @JsonProperty("detail_errormsg")
+        private List detailErrormsg;
+
+        @JsonProperty("recognize_warn_code")
+        private List recognizeWarnCode;
+
+        @JsonProperty("recognize_warn_msg")
+        private List recognizeWarnMsg;
 
     }
 

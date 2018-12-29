@@ -3,6 +3,8 @@ package cn.jadenziv.source.qcloud.image.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 智能鉴黄 API
  * <a target="_blank"  href="https://cloud.tencent.com/document/product/864/17609">查看文档</a>
@@ -13,19 +15,26 @@ import lombok.Data;
 @Data
 public class PornDetectResult {
 
-    private Integer code;
+    @JsonProperty("result_list")
+    private List<Result> resultList;
 
-    private String message;
+    @Data
+    public static class Result {
 
-    /**
-     * 当前图片的 url
-     */
-    private String url;
+        private Integer code;
 
-    /**
-     * 具体查询数据，具体见下表
-     */
-    private Detail data;
+        private String message;
+
+        /**
+         * 当前图片的 url
+         */
+        private String url;
+
+        /**
+         * 具体查询数据，具体见下表
+         */
+        private Detail data;
+    }
 
     @Data
     public static class Detail {
@@ -49,8 +58,8 @@ public class PornDetectResult {
         /**
          * 图片为性感图片的评分
          */
-        @JsonProperty("hotScore")
-        private Double hot_score;
+        @JsonProperty("hot_score")
+        private Double hotScore;
 
         /**
          * 图片为色情图片的评分
